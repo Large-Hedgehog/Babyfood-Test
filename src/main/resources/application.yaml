@@ -1,0 +1,39 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 3MB
+      max-request-size: 12MB
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://192.168.75.1:3306/team_a
+    username: kdy
+    password: javatest
+
+mybatis:
+  type-aliases-package: com.green.babyfood #????? ??? ???
+  mapper-locations: mapper/*.xml
+
+springdoc:
+  swagger-ui:
+    path: /swagger.html
+
+
+file:
+  dir: /home/download
+
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:mariadb://192.168.0.144:3306/babyfood
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:init/schema.sql
+      data-locations: classpath:init/data.sql
